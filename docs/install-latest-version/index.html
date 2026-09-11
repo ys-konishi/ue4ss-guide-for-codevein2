@@ -178,7 +178,7 @@
   <nav class="toc">
     <h2>Contents</h2>
     <ol>
-      <li><a href="#step1">Download UE4SS v3.0.1-1012</a></li>
+      <li><a href="#step1">Download UE4SS (experimental-latest)</a></li>
       <li><a href="#step2">Open the game folder</a></li>
       <li><a href="#step3">Install UE4SS</a></li>
       <li><a href="#step4">Edit mods.txt and disable CheatManagerEnablerMod</a></li>
@@ -187,42 +187,34 @@
   </nav>
 
   <section class="step" id="step1">
-    <h2><span class="step-num">1</span>Download UE4SS v3.0.1-1012</h2>
+    <h2><span class="step-num">1</span>Download UE4SS (experimental-latest)</h2>
 
-    <h3 class="substep">1-1. Open the release archive</h3>
+    <h3 class="substep">1-1. Open the release page</h3>
     <ul class="substeps">
-      <li>Go to the following page, then click <strong>UE4SS Experimental Release Archive</strong> in the <strong>Release list</strong> sidebar on the left:<br>
+      <li>Go to the following page:<br>
         <a class="link" href="https://github.com/UE4SS-RE/RE-UE4SS/releases#release-experimental-latest" target="_blank" rel="noopener">https://github.com/UE4SS-RE/RE-UE4SS/releases#release-experimental-latest</a>
       </li>
     </ul>
     <figure>
-      <img src="images/01-1_UE4SS-experimental-page-to-release-list.png" alt="The RE-UE4SS releases page on GitHub, with UE4SS Experimental Release Archive highlighted in the Release list sidebar on the left.">
-      <figcaption>On the releases page, click <strong>UE4SS Experimental Release Archive</strong> in the <strong>Release list</strong> sidebar.</figcaption>
+      <img src="../images/01_UE4SS-experimental-latest-page.png" alt="The RE-UE4SS releases page on GitHub, showing the experimental-latest release selected in the release list.">
+      <figcaption>The RE-UE4SS releases page with the <code>experimental-latest</code> release selected.</figcaption>
     </figure>
 
     <h3 class="substep">1-2. Expand the Assets list</h3>
     <ul class="substeps">
       <li>Scroll down the page and click the <strong>Assets</strong> label to expand the list of downloadable files.</li>
     </ul>
-    <figure>
-      <img src="images/01-2_UE4SS-show-release-archive-and-scroll.png" alt="The UE4SS Experimental Release Archive page on GitHub, with the release title highlighted and a downward arrow indicating to scroll down the page.">
-      <figcaption>Confirm that the <strong>UE4SS Experimental Release Archive</strong> page has opened, then scroll down.</figcaption>
-    </figure>
-    <figure>
-      <img src="images/01-3_UE4SS-click-asset.png" alt="The lower part of the release page, with the collapsed Assets label highlighted.">
-      <figcaption>Click the <strong>Assets</strong> label to expand the list of downloadable files.</figcaption>
-    </figure>
 
     <h3 class="substep">1-3. Download the UE4SS zip file</h3>
     <ul class="substeps">
-      <li>A list of downloadable files will appear. Download <code>UE4SS_v3.0.1-1012-gc838a8ac.zip</code>.</li>
+      <li>A list of downloadable files will appear. Download the file named <code>UE4SS_&lt;version&gt;.zip</code>.</li>
     </ul>
     <figure>
-      <img src="images/01-4_download_v1012.png" alt="The expanded Assets list on GitHub, with the file UE4SS_v3.0.1-1012-gc838a8ac.zip highlighted among the other release archives.">
-      <figcaption>From the long list of assets, pick exactly <code>UE4SS_v3.0.1-1012-gc838a8ac.zip</code>.</figcaption>
+      <img src="../images/02_open-assets-and-download-file.png" alt="The expanded Assets section on GitHub, with the Assets toggle and the UE4SS zip file highlighted for download.">
+      <figcaption>Click <strong>Assets</strong> to expand the list, then download the file starting with <code>UE4SS_</code>.</figcaption>
     </figure>
     <div class="callout">
-      <strong>Important:</strong> The Assets list contains hundreds of builds. This guide is written for <code>UE4SS_v3.0.1-1012-gc838a8ac.zip</code>, so download that exact file — not a newer build, and not <strong>Source code (zip)</strong>, which will not work.
+      <strong>Important:</strong> Make sure you download the file that starts with <code>UE4SS_</code> (e.g. <code>UE4SS_v3.0.1-1012-gc838a8ac.zip</code>) — not <strong>Source code (zip)</strong>, which will not work.
     </div>
   </section>
 
@@ -234,7 +226,7 @@
       <li>In your Steam library, select <strong>CODE VEIN II</strong>, then choose <strong>Manage</strong> → <strong>Browse local files</strong>.</li>
     </ul>
     <figure>
-      <img src="images/03_steam-app-browse-local-files.png" alt="Steam library context menu for CODE VEIN II, with Manage and Browse local files highlighted.">
+      <img src="../images/03_steam-app-browse-local-files.png" alt="Steam library context menu for CODE VEIN II, with Manage and Browse local files highlighted.">
       <figcaption>Right-click (or use the gear menu on) CODE VEIN II, then select <strong>Manage → Browse local files</strong>.</figcaption>
     </figure>
 
@@ -252,7 +244,7 @@
       <li>From the extracted zip contents, copy <code>dwmapi.dll</code> and the <code>ue4ss</code> folder into the <code>Win64</code> folder opened above.</li>
     </ol>
     <figure>
-      <img src="images/04_copy-extracted-ue4ss-files.png" alt="Two File Explorer windows side by side: the extracted UE4SS folder containing dwmapi.dll and the ue4ss folder on the right, and the CodeVein2\\Binaries\\Win64 destination folder on the left, with an arrow showing the files being copied over.">
+      <img src="../images/04_copy-extracted-ue4ss-files.png" alt="Two File Explorer windows side by side: the extracted UE4SS folder containing dwmapi.dll and the ue4ss folder on the right, and the CodeVein2\\Binaries\\Win64 destination folder on the left, with an arrow showing the files being copied over.">
       <figcaption>Copy <code>dwmapi.dll</code> and the <code>ue4ss</code> folder from the extracted UE4SS archive into <code class="path">CodeVein2\Binaries\Win64</code>.</figcaption>
     </figure>
     <div class="callout">
@@ -268,7 +260,7 @@
       <li>Open the <code>Mods</code> folder inside the <code>ue4ss</code> folder you copied in Step 3, i.e. <code class="path">CodeVein2\Binaries\Win64\ue4ss\Mods</code>.</li>
     </ul>
     <figure>
-      <img src="images/05_position-of-mods-txt.png" alt="File Explorer showing the ue4ss/Mods folder contents, with mods.txt highlighted at the bottom of the file list.">
+      <img src="../images/05_position-of-mods-txt.png" alt="File Explorer showing the ue4ss/Mods folder contents, with mods.txt highlighted at the bottom of the file list.">
       <figcaption><code>mods.txt</code> is located inside <code class="path">Win64\ue4ss\Mods</code>.</figcaption>
     </figure>
 
@@ -282,7 +274,7 @@
       <li>Find the line that reads <code>CheatManagerEnablerMod : 1</code> and change it to <code>CheatManagerEnablerMod : 0</code>, then save the file.</li>
     </ul>
     <figure>
-      <img src="images/06_editting-mods-txt.png" alt="Two Notepad windows side by side showing mods.txt before and after editing: on the left, CheatManagerEnablerMod is set to 1; on the right, it has been changed to 0.">
+      <img src="../images/06_editting-mods-txt.png" alt="Two Notepad windows side by side showing mods.txt before and after editing: on the left, CheatManagerEnablerMod is set to 1; on the right, it has been changed to 0.">
       <figcaption>Before (left) and after (right): change only the value at the end of the <code>CheatManagerEnablerMod</code> line, from <code>1</code> to <code>0</code>.</figcaption>
     </figure>
     <div class="callout">
