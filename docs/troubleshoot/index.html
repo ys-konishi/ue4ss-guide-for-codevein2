@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UE4SS Troubleshooting for Code Vein II</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f7f7f9;
+    --card-bg: #ffffff;
+    --text: #1c1c1e;
+    --muted: #5a5a60;
+    --accent: #a4243b;
+    --border: #e2e2e6;
+    --code-bg: #f0f0f3;
+    --warn-bg: #fff4e5;
+    --warn-border: #e8a33d;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16161a;
+      --card-bg: #1f1f24;
+      --text: #ececef;
+      --muted: #a3a3ab;
+      --accent: #e0596f;
+      --border: #33333a;
+      --code-bg: #29292f;
+      --warn-bg: #3a2f1a;
+      --warn-border: #b9812f;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+  }
+  .wrap {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 2.5rem 1.25rem 5rem;
+  }
+  header.page-header {
+    margin-bottom: 2.5rem;
+  }
+  h1 {
+    font-size: 1.9rem;
+    margin: 0 0 0.5rem;
+  }
+  .subtitle {
+    color: var(--muted);
+    font-size: 1rem;
+    margin: 0;
+  }
+  nav.toc {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 1.75rem 0;
+  }
+  nav.toc h2 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    margin: 0 0 0.5rem;
+  }
+  nav.toc ol {
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+  nav.toc li { margin-bottom: 0.3rem; }
+  nav.toc a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  nav.toc a:hover { text-decoration: underline; }
+
+  section.step {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.75rem;
+    margin-bottom: 1.75rem;
+  }
+  section.step h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.3rem;
+    margin-top: 0;
+  }
+  .step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  h3.substep {
+    font-size: 1.02rem;
+    margin: 1.5rem 0 0.5rem;
+  }
+  ol.substeps, ul.substeps {
+    padding-left: 1.4rem;
+  }
+  ol.substeps > li, ul.substeps > li {
+    margin-bottom: 0.6rem;
+  }
+  code, .path {
+    background: var(--code-bg);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.92em;
+    word-break: break-all;
+  }
+  a.link {
+    color: var(--accent);
+    word-break: break-all;
+  }
+  figure {
+    margin: 1rem 0;
+  }
+  figure img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  figcaption {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+  .callout {
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-border);
+    border-radius: 8px;
+    padding: 0.85rem 1rem;
+    margin: 1rem 0;
+    font-size: 0.95rem;
+  }
+  .callout strong { color: var(--warn-border); }
+  .answer {
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin: 0.75rem 0 0;
+  }
+  .answer strong { color: var(--text); }
+  .final {
+    background: var(--card-bg);
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    padding: 1.75rem;
+    text-align: center;
+  }
+  .final h2 { margin-top: 0; }
+  .final a { color: var(--accent); }
+  footer {
+    margin-top: 3rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="page-header">
+    <h1>UE4SS Troubleshooting for Code Vein II</h1>
+    <p class="subtitle">If a UE4SS mod does not work, or the game crashes, work through the checks below in order.</p>
+  </header>
+
+  <nav class="toc">
+    <h2>Checklist</h2>
+    <ol>
+      <li><a href="#check1">Are you using the experimental-latest build of UE4SS?</a></li>
+      <li><a href="#check2">Is the version exactly <code>UE4SS_v3.0.1-1012-gc838a8ac.zip</code>?</a></li>
+      <li><a href="#check3">Are <code>dwmapi.dll</code> and the <code>ue4ss</code> folder in the right place?</a></li>
+      <li><a href="#check4">Is <code>CheatManagerEnablerMod</code> set to <code>0</code> in <code>mods.txt</code>?</a></li>
+      <li><a href="#check5">Does each mod have its own folder under <code>Mods</code>?</a></li>
+    </ol>
+  </nav>
+
+  <section class="step" id="check1">
+    <h2><span class="step-num">1</span>Are you using the experimental-latest build?</h2>
+    <ul class="substeps">
+      <li>UE4SS mods for Code Vein II require the <strong>experimental-latest</strong> build of UE4SS. The regular stable release will not work.</li>
+      <li>The experimental builds are listed on the <strong>UE4SS Experimental Release Archive</strong> page:<br>
+        <a class="link" href="https://github.com/UE4SS-RE/RE-UE4SS/releases#release-experimental-latest" target="_blank" rel="noopener">https://github.com/UE4SS-RE/RE-UE4SS/releases#release-experimental-latest</a>
+      </li>
+    </ul>
+    <p class="answer"><strong>If not:</strong> reinstall by following the <a class="link" href="../">installation guide</a>.</p>
+  </section>
+
+  <section class="step" id="check2">
+    <h2><span class="step-num">2</span>Is the version exactly v3.0.1-1012?</h2>
+    <ul class="substeps">
+      <li>Check that the archive you installed was <code>UE4SS_v3.0.1-1012-gc838a8ac.zip</code>.</li>
+      <li>Some mods only run on this exact build, so a newer experimental build is not a safe substitute.</li>
+    </ul>
+    <figure>
+      <img src="../images/01-4_download_v1012.png" alt="The expanded Assets list on GitHub, with the file UE4SS_v3.0.1-1012-gc838a8ac.zip highlighted among the other release archives.">
+      <figcaption>From the long list of assets, pick exactly <code>UE4SS_v3.0.1-1012-gc838a8ac.zip</code>.</figcaption>
+    </figure>
+    <div class="callout">
+      <strong>Important:</strong> The Assets list contains hundreds of builds. Download that exact file — not a newer build, and not <strong>Source code (zip)</strong>, which will not work.
+    </div>
+  </section>
+
+  <section class="step" id="check3">
+    <h2><span class="step-num">3</span>Are the UE4SS files in the right folder?</h2>
+    <ul class="substeps">
+      <li>Both <code>dwmapi.dll</code> and the <code>ue4ss</code> folder must exist directly inside:<br>
+        <code class="path">&lt;game folder&gt;\CodeVein2\Binaries\Win64</code>
+      </li>
+    </ul>
+    <figure>
+      <img src="../images/04_copy-extracted-ue4ss-files.png" alt="Two File Explorer windows side by side: the extracted UE4SS folder containing dwmapi.dll and the ue4ss folder, and the CodeVein2\Binaries\Win64 destination folder, with an arrow showing the files being copied over.">
+      <figcaption><code>dwmapi.dll</code> and the <code>ue4ss</code> folder belong in <code class="path">CodeVein2\Binaries\Win64</code>.</figcaption>
+    </figure>
+    <div class="callout">
+      <strong>Important:</strong> They must not sit inside <code>Binaries</code>, inside the game's root folder, or nested inside each other. Copying to the wrong location is the most common cause of installation failure.
+    </div>
+  </section>
+
+  <section class="step" id="check4">
+    <h2><span class="step-num">4</span>Is CheatManagerEnablerMod set to 0?</h2>
+    <ul class="substeps">
+      <li>Open the following file in Notepad or a similar text editor:<br>
+        <code class="path">&lt;game folder&gt;\CodeVein2\Binaries\Win64\ue4ss\Mods\mods.txt</code>
+      </li>
+      <li>Find the <code>CheatManagerEnablerMod</code> line and confirm it reads <code>CheatManagerEnablerMod : 0</code>. If it reads <code>1</code>, change it to <code>0</code> and save the file.</li>
+    </ul>
+    <figure>
+      <img src="../images/05_position-of-mods-txt.png" alt="File Explorer showing the ue4ss/Mods folder contents, with mods.txt highlighted at the bottom of the file list.">
+      <figcaption><code>mods.txt</code> is located inside <code class="path">Win64\ue4ss\Mods</code>.</figcaption>
+    </figure>
+    <figure>
+      <img src="../images/06_editting-mods-txt.png" alt="Two Notepad windows side by side showing mods.txt before and after editing: on the left, CheatManagerEnablerMod is set to 1; on the right, it has been changed to 0.">
+      <figcaption>Change only the value at the end of the <code>CheatManagerEnablerMod</code> line, from <code>1</code> to <code>0</code>.</figcaption>
+    </figure>
+    <div class="callout">
+      <strong>Tip:</strong> Only change the number at the end of the line. Do not delete the line or add stray whitespace, and save over <code>mods.txt</code> rather than saving as a new file.
+    </div>
+  </section>
+
+  <section class="step" id="check5">
+    <h2><span class="step-num">5</span>Does each mod have its own folder?</h2>
+    <ul class="substeps">
+      <li>Every installed mod needs a folder named after that mod under:<br>
+        <code class="path">&lt;game folder&gt;\CodeVein2\Binaries\Win64\ue4ss\Mods</code>
+      </li>
+      <li>If a mod's folder is missing, or the archive was extracted one level too deep, that mod will not load. Re-extract it so the mod's own folder sits directly inside <code>Mods</code>.</li>
+    </ul>
+  </section>
+
+  <section class="final" id="done">
+    <h2>Still not working?</h2>
+    <p>Go back to the <a href="../index.html">installation guide</a> and reinstall UE4SS from the beginning.</p>
+  </section>
+
+  <footer>
+    UE4SS Guide for Code Vein II
+  </footer>
+
+</div>
+</body>
+</html>
