@@ -188,42 +188,32 @@
   <nav class="toc">
     <h2>Checklist</h2>
     <ol>
-      <li><a href="#check1">Are you using the experimental-latest build of UE4SS?</a></li>
-      <li><a href="#check2">Is the version exactly <code>UE4SS_v3.0.1-1012-gc838a8ac.zip</code>?</a></li>
-      <li><a href="#check3">Are <code>dwmapi.dll</code> and the <code>ue4ss</code> folder in the right place?</a></li>
-      <li><a href="#check4">Is <code>CheatManagerEnablerMod</code> set to <code>0</code> in <code>mods.txt</code>?</a></li>
-      <li><a href="#check5">Does each mod have its own folder under <code>Mods</code>?</a></li>
+      <li><a href="#check1">Have you installed the UE4SS release build v4.0.0?</a></li>
+      <li><a href="#check2">Are <code>dwmapi.dll</code> and the <code>ue4ss</code> folder in the right place?</a></li>
+      <li><a href="#check3">Is <code>CheatManagerEnablerMod</code> set to <code>0</code> in <code>mods.txt</code>?</a></li>
+      <li><a href="#check4">Does each mod have its own folder under <code>Mods</code>?</a></li>
     </ol>
   </nav>
 
   <section class="step" id="check1">
-    <h2><span class="step-num">1</span>Are you using the experimental-latest build?</h2>
+    <h2><span class="step-num">1</span>Have you installed UE4SS release v4.0.0?</h2>
     <ul class="substeps">
-      <li>UE4SS mods for Code Vein II require the <strong>experimental-latest</strong> build of UE4SS. The regular stable release will not work.</li>
-      <li>The experimental builds are listed on the <strong>UE4SS Experimental Release Archive</strong> page:<br>
-        <a class="link" href="https://github.com/UE4SS-RE/RE-UE4SS/releases#release-experimental-latest" target="_blank" rel="noopener">https://github.com/UE4SS-RE/RE-UE4SS/releases#release-experimental-latest</a>
+      <li>UE4SS mods for Code Vein II require the <strong>release</strong> build <strong>v4.0.0</strong>. Check that the archive you installed was <code>UE4SS_v4.0.0.zip</code>, downloaded from the <strong>v4.0.0</strong> release:<br>
+        <a class="link" href="https://github.com/UE4SS-RE/RE-UE4SS/releases" target="_blank" rel="noopener">https://github.com/UE4SS-RE/RE-UE4SS/releases</a>
       </li>
     </ul>
+    <figure>
+      <img src="../images/01A-2_UE4SS_v4_Assets_2026-11-24%20071802.png" alt="The expanded Assets list of the v4.0.0 release on GitHub, with UE4SS_v4.0.0.zip at the top of the list of files.">
+      <figcaption>From the <strong>Assets</strong> list of the v4.0.0 release, the correct file is <code>UE4SS_v4.0.0.zip</code>.</figcaption>
+    </figure>
+    <div class="callout">
+      <strong>Important:</strong> <code>zDEV-UE4SS_v4.0.0.zip</code> and <strong>Source code (zip)</strong> will not work, and neither will an experimental build.
+    </div>
     <p class="answer"><strong>If not:</strong> reinstall by following the <a class="link" href="../">installation guide</a>.</p>
   </section>
 
   <section class="step" id="check2">
-    <h2><span class="step-num">2</span>Is the version exactly v3.0.1-1012?</h2>
-    <ul class="substeps">
-      <li>Check that the archive you installed was <code>UE4SS_v3.0.1-1012-gc838a8ac.zip</code>.</li>
-      <li>Some mods only run on this exact build, so a newer experimental build is not a safe substitute.</li>
-    </ul>
-    <figure>
-      <img src="../images/01-4_download_v1012.png" alt="The expanded Assets list on GitHub, with the file UE4SS_v3.0.1-1012-gc838a8ac.zip highlighted among the other release archives.">
-      <figcaption>From the long list of assets, pick exactly <code>UE4SS_v3.0.1-1012-gc838a8ac.zip</code>.</figcaption>
-    </figure>
-    <div class="callout">
-      <strong>Important:</strong> The Assets list contains hundreds of builds. Download that exact file — not a newer build, and not <strong>Source code (zip)</strong>, which will not work.
-    </div>
-  </section>
-
-  <section class="step" id="check3">
-    <h2><span class="step-num">3</span>Are the UE4SS files in the right folder?</h2>
+    <h2><span class="step-num">2</span>Are the UE4SS files in the right folder?</h2>
     <ul class="substeps">
       <li>Both <code>dwmapi.dll</code> and the <code>ue4ss</code> folder must exist directly inside:<br>
         <code class="path">&lt;game folder&gt;\CodeVein2\Binaries\Win64</code>
@@ -238,8 +228,8 @@
     </div>
   </section>
 
-  <section class="step" id="check4">
-    <h2><span class="step-num">4</span>Is CheatManagerEnablerMod set to 0?</h2>
+  <section class="step" id="check3">
+    <h2><span class="step-num">3</span>Is CheatManagerEnablerMod set to 0?</h2>
     <ul class="substeps">
       <li>Open the following file in Notepad or a similar text editor:<br>
         <code class="path">&lt;game folder&gt;\CodeVein2\Binaries\Win64\ue4ss\Mods\mods.txt</code>
@@ -259,8 +249,8 @@
     </div>
   </section>
 
-  <section class="step" id="check5">
-    <h2><span class="step-num">5</span>Does each mod have its own folder?</h2>
+  <section class="step" id="check4">
+    <h2><span class="step-num">4</span>Does each mod have its own folder?</h2>
     <ul class="substeps">
       <li>Every installed mod needs a folder named after that mod under:<br>
         <code class="path">&lt;game folder&gt;\CodeVein2\Binaries\Win64\ue4ss\Mods</code>
